@@ -1,23 +1,35 @@
-public class MyClass()
+public class Main
 {
-    // Class level variable definitions, one a constant.
-    
-    int       myClassLevelVariable = 1;
-    final int MY_CLASS_CONSTANT = 1;
+    int myVar1;
+    myVar1 = 5;      // fails, not in a method.
 
-    /* Next line starts a method definition */
-
-    public void myMethod()
+    static void myMethod()
     {
-        /*
-         Method local variable definitions.
-        */
+        int myVar2;
+        final int myVar4 = 9;
 
-        int       myMethodLocalVariable;
-        final int MY_METHOD_CONSTANT = 2;
+        myVar2 = 1;   // ok.
+        myVar1 = 1;   // ok.
 
-        // Next line is a statement.
+        if (myVar1 == 1)
+        {
+            int myVar3 = 2;
 
-        myMethodLocalVariable = myClassLevelVariable + MY_METHOD_CONSTANT;  // Comment.
+            myVar3 = myVar2 + myVar1;    // ok.
+        }
+
+        myVar3 = 7;   // fails. myVar3 only visible in the if statement code block.
+        
+        myVar4 = 17;  // fails. myVar4 is final and already assigned a value.
     }
+
+    static void myMethod2()
+    {
+        myVar2 = 3;   // fails, myVar2 only visible in myMethod1.
+    }
+
+	
+	public static void main(String[] args) {
+		/* Insert main code */
+	}
 }
